@@ -1,0 +1,25 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: kubernetes-dashboard
+  namespace: kubernetes-dashboard
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: kubernetes-dashboard
+      sourceRef:
+        kind: HelmRepository
+        name: kubernetes-dashboard
+        namespace: flux-system
+      version: "5.8.0"  # Set the desired version
+  values:
+    serviceAccount:
+      create: true
+      name: dashboard-admin
+    rbac:
+      clusterAdminRole: true
+    ingress:
+      enabled: true
+      hosts:
+        - <dashboard-your-domain.com>
