@@ -9,6 +9,6 @@ spec:
   prune: true
   sourceRef:
     kind: GitRepository
-    name: <your-repository-name>
+    name: github.com/balintwalter/PSAC
   targetNamespace: flux-system
   timeout: 3m
